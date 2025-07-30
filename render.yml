@@ -1,0 +1,7 @@
+Services:
+- type: web
+  name: birthdayCard
+  env: static
+  buildCommand: npm run build
+  staticPublishPath: build
+  healthCheckPath: ./package.json
