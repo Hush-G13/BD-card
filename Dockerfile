@@ -1,11 +1,13 @@
 FROM node:18-alpine
 
-WORKDIR  /src
+WORKDIR /src
 
 COPY package.json package-lock.json ./
 
-RUN npm install --silent
+RUN npm ci --silent  # Use npm ci for consistent installs
 COPY . .
 
+RUN npm run build  # Build the application
+
 EXPOSE 80
-CMD ["npm","run","build"]
+CMD ["serve", "-s", "build"]  # Serve the built React app
